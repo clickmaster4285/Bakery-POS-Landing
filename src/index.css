@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 33% 97%;
+    --foreground: 20 10% 15%;
+
+    --card: 40 30% 99%;
+    --card-foreground: 20 10% 15%;
+
+    --popover: 40 30% 99%;
+    --popover-foreground: 20 10% 15%;
+
+    --primary: 340 60% 30%;
+    --primary-foreground: 40 30% 97%;
+
+    --secondary: 38 80% 55%;
+    --secondary-foreground: 20 10% 10%;
+
+    --muted: 35 20% 92%;
+    --muted-foreground: 20 8% 45%;
+
+    --accent: 38 80% 55%;
+    --accent-foreground: 20 10% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 35 20% 88%;
+    --input: 35 20% 88%;
+    --ring: 340 60% 30%;
+
+    --radius: 0.75rem;
+
+    --gold: 38 80% 55%;
+    --gold-light: 40 70% 85%;
+    --cream: 40 33% 97%;
+    --cream-dark: 35 25% 90%;
+    --maroon: 340 60% 30%;
+    --maroon-light: 340 40% 45%;
+    --navy: 220 50% 20%;
+    --brown: 25 40% 30%;
+    --brown-light: 25 25% 50%;
+
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'DM Sans', sans-serif;
+
+    --gradient-hero: linear-gradient(135deg, hsl(40 33% 97%) 0%, hsl(40 70% 85%) 50%, hsl(35 25% 90%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(38 80% 55%) 0%, hsl(42 85% 65%) 100%);
+    --gradient-maroon: linear-gradient(135deg, hsl(340 60% 30%) 0%, hsl(340 40% 45%) 100%);
+    --shadow-elegant: 0 10px 40px -10px hsl(25 40% 30% / 0.15);
+    --shadow-card: 0 4px 20px -4px hsl(25 40% 30% / 0.08);
+    --shadow-glow: 0 0 30px hsl(38 80% 55% / 0.25);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-primary-foreground px-8 py-4 rounded-lg font-body font-semibold text-base
+           transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0;
+    background: var(--gradient-maroon);
+  }
+
+  .btn-gold {
+    @apply px-8 py-4 rounded-lg font-body font-semibold text-base
+           transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0;
+    background: var(--gradient-gold);
+    color: hsl(var(--brown));
+  }
+
+  .card-premium {
+    @apply bg-card rounded-2xl border border-border transition-all duration-300;
+    box-shadow: var(--shadow-card);
+  }
+
+  .card-premium:hover {
+    box-shadow: var(--shadow-elegant);
+    transform: translateY(-4px);
+  }
+
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24;
+  }
+
+  .gradient-text {
+    background: var(--gradient-maroon);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gold-accent {
+    color: hsl(var(--gold));
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.6s ease-out forwards;
+  }
+
+  .animate-fade-up-delay-1 {
+    animation: fade-up 0.6s ease-out 0.15s forwards;
+    opacity: 0;
+  }
+
+  .animate-fade-up-delay-2 {
+    animation: fade-up 0.6s ease-out 0.3s forwards;
+    opacity: 0;
+  }
+
+  .animate-fade-up-delay-3 {
+    animation: fade-up 0.6s ease-out 0.45s forwards;
+    opacity: 0;
+  }
+
+  @keyframes flow-pulse {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+  @keyframes flow-pulse-v {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+  }
+  .animate-flow-pulse {
+    animation: flow-pulse 2.8s ease-in-out infinite;
+  }
+  .animate-flow-pulse-v {
+    animation: flow-pulse-v 2.8s ease-in-out infinite;
+  }
+
+  /* How it works: shifting gradient so the “flow” reads clearly on the track */
+  @keyframes flow-gradient-shift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @keyframes flow-gradient-shift-v {
+    0% {
+      background-position: 50% 0%;
+    }
+    50% {
+      background-position: 50% 100%;
+    }
+    100% {
+      background-position: 50% 0%;
+    }
+  }
+  .how-it-works-flow-track-h {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--gold-light)) 0%,
+      hsl(var(--gold)) 18%,
+      hsl(var(--maroon)) 50%,
+      hsl(var(--gold)) 82%,
+      hsl(var(--gold-light)) 100%
+    );
+    background-size: 220% 100%;
+    animation: flow-gradient-shift 5.5s ease-in-out infinite;
+  }
+  .how-it-works-flow-track-v {
+    background: linear-gradient(
+      180deg,
+      hsl(var(--gold-light)) 0%,
+      hsl(var(--gold)) 18%,
+      hsl(var(--maroon)) 50%,
+      hsl(var(--gold)) 82%,
+      hsl(var(--gold-light)) 100%
+    );
+    background-size: 100% 220%;
+    animation: flow-gradient-shift-v 5.5s ease-in-out infinite;
+  }
+}
